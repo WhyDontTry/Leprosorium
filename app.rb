@@ -12,7 +12,7 @@ get '/new' do
 end
 
 post '/new' do
-
+	erb "<h2>Ha ha, classic...</h2>"
 end
 
 get '/main' do
