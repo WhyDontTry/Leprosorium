@@ -6,3 +6,15 @@ require 'sinatra/reloader'
 get '/' do
 	erb "Yo man! <a href=\"https://github.com/bootstrap-ruby/sinatra-bootstrap\">Original</a> pattern has been modified for <a href=\"http://rubyschool.us/\">Ruby School</a>"			
 end
+
+get '/new' do
+	erb "Hi"
+end
+
+post '/new' do
+
+end
+
+get '/main' do
+
+end
