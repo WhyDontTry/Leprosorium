@@ -12,7 +12,8 @@ get '/new' do
 end
 
 post '/new' do
-	erb "<h2>Ha ha, classic...</h2>"
+	@content = params[:content]
+	erb "<h2>Ha ha, classic...</h2><br><h3>You typed: #{@content}</h3> "
 end
 
 get '/main' do
