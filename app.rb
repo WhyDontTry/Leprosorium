@@ -53,3 +53,9 @@ end
 get '/main' do
 
 end
+
+get '/details/:id' do
+	post_id = params[:id]
+
+	erb "<h2>Post number: #{post_id}</h2>"
+end
