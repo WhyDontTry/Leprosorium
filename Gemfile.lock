@@ -1,6 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    mini_portile2 (2.8.1)
     multi_json (1.15.0)
     mustermann (1.1.1)
       ruby2_keywords (~> 0.0.1)
@@ -24,6 +25,8 @@ GEM
       tilt (~> 2.0)
     sinatra-reloader (1.0)
       sinatra-contrib
+    sqlite3 (1.6.0)
+      mini_portile2 (~> 2.8.0)
     tilt (2.0.10)
 
 PLATFORMS
@@ -33,6 +36,7 @@ DEPENDENCIES
   puma
   sinatra
   sinatra-reloader
+  sqlite3
 
 BUNDLED WITH
    1.17.2
