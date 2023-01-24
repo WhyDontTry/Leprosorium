@@ -21,7 +21,8 @@ configure do
 			(
 				"id" INTEGER PRIMARY KEY AUTOINCREMENT,
 				"created_date" DATE,
-				"content" TEXT
+				"content" TEXT,
+				"autor" TEXT
 			)'
 
 	@db.execute 'CREATE TABLE IF NOT EXISTS
@@ -48,13 +49,14 @@ end
 
 post '/new' do
 	@content = params[:content]
+	autor = params[:autor]
 
 	if @content.length <= 0
 		@error = "Type text"
 		return erb :new
 	end
 
-	@db.execute 'INSERT INTO Posts (content, created_date) VALUES (?, datetime())', [@content]
+	@db.execute 'INSERT INTO Posts (content, created_date, autor) VALUES (?, datetime(), ?)', [@content, autor]
 
 	redirect to '/'
 end
