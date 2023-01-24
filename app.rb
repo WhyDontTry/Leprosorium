@@ -76,5 +76,12 @@ post '/details/:id' do
 	post_id = params[:id]
 	content = params[:content]
 
-	erb "You typed comment #{content} for post #{post_id}"
+	@db.execute 'INSERT INTO Comments 
+		(
+			content, 
+			created_date, 
+			post_id
+		) VALUES (?, datetime(), ?)', [content, post_id]
+
+	redirect to('/details/'.concat post_id)
 end
