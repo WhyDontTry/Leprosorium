@@ -51,9 +51,16 @@ post '/new' do
 	@content = params[:content]
 	autor = params[:autor]
 
-	if @content.length <= 0
-		@error = "Type text"
-		return erb :new
+	errors = {
+		:content => "Type the text",
+		:autor => "Type autor's name"
+	}
+
+	params.each do |key, value|
+		if value.length <= 0
+			@error = errors[key]
+			return erb :new
+		end
 	end
 
 	@db.execute 'INSERT INTO Posts (content, created_date, autor) VALUES (?, datetime(), ?)', [@content, autor]
@@ -80,6 +87,11 @@ end
 post '/details/:id' do
 	post_id = params[:id]
 	content = params[:content]
+
+	if content.length <= 0
+		@error = "Type the comment"
+		redirect to('/details/'.concat post_id)
+	end
 
 	@db.execute 'INSERT INTO Comments 
 		(
