@@ -69,6 +69,9 @@ get '/details/:id' do
 	results = @db.execute 'SELECT * FROM Posts WHERE id = ?', [post_id]
 	@row = results[0]
 
+	@comments = @db.execute 'SELECT * FROM Comments 
+					WHERE post_id = ? ORDER BY id', [post_id]
+
 	erb :details
 end
 
