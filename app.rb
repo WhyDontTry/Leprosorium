@@ -56,8 +56,8 @@ post '/new' do
 		:autor => "Type autor's name"
 	}
 
-	params.each do |key, value|
-		if value.length <= 0
+	errors.each do |key, value|
+		if params[key] == ''
 			@error = errors[key]
 			return erb :new
 		end
