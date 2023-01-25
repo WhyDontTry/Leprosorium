@@ -90,7 +90,12 @@ post '/details/:id' do
 
 	if content.length <= 0
 		@error = "Type the comment"
-		redirect to('/details/'.concat post_id)
+		results = @db.execute 'SELECT * FROM Posts WHERE id = ?', [post_id]
+		@row = results[0]
+
+		@comments = @db.execute 'SELECT * FROM Comments 
+						WHERE post_id = ? ORDER BY id', [post_id]
+		return erb :details
 	end
 
 	@db.execute 'INSERT INTO Comments 
